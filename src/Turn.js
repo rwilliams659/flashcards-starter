@@ -24,6 +24,7 @@ class Turn {
       return 'correct!';
     }
     return 'incorrect!';
+  }
 }
 
 module.exports = Turn; 
