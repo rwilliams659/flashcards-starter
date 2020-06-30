@@ -50,18 +50,18 @@ describe('Turn', function() {
     const card = new Card(4, 'What type of prototype method does not modify the existing array but returns a particular representation of the array?', ['mutator method', 'accessor method', 'iteration method'], 'accessor method');
     const turn = new Turn('mutator method', card);  
     expect(turn.evaluateGuess()).to.equal(false); 
-  })
+  });
 
   //test giveFeedback property 
+  it('should indicate if guess is correct', function() {
+    const card = new Card(4, 'What type of prototype method does not modify the existing array but returns a particular representation of the array?', ['mutator method', 'accessor method', 'iteration method'], 'accessor method');
+    const turn = new Turn('accessor method', card);
+    expect(turn.giveFeedback()).to.equal('Correct!');    
+  });
 
+  it('should indicate if guess is incorrect', function() {
+    const card = new Card(4, 'What type of prototype method does not modify the existing array but returns a particular representation of the array?', ['mutator method', 'accessor method', 'iteration method'], 'accessor method');
+    const turn = new Turn('mutator method', card);
+    expect(turn.giveFeedback()).to.equal('Incorrect!');    
+  });
 }); 
-
-
-
-// Example data:
-// {
-//   "id": 4,
-//   "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
-//   "answers": ["mutator method", "accessor method", "iteration method"],
-//   "correctAnswer": "accessor method"
-// }
