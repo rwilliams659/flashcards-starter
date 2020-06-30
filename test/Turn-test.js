@@ -40,7 +40,17 @@ describe('Turn', function() {
     expect(turn.returnCard()).to.deep.equal(card);
   }); 
 
-  //test evaluateGuess property
+  it('should be able to evaluate the guess and return true if guess is correct', function() {
+    const card = new Card(4, 'What type of prototype method does not modify the existing array but returns a particular representation of the array?', ['mutator method', 'accessor method', 'iteration method'], 'accessor method');
+    const turn = new Turn('accessor method', card);
+    expect(turn.evaluateGuess()).to.equal(true);     
+  });
+
+  it('should return false if guess is incorrect', function() {
+    const card = new Card(4, 'What type of prototype method does not modify the existing array but returns a particular representation of the array?', ['mutator method', 'accessor method', 'iteration method'], 'accessor method');
+    const turn = new Turn('mutator method', card);  
+    expect(turn.evaluateGuess()).to.equal(false); 
+  })
 
   //test giveFeedback property 
 
