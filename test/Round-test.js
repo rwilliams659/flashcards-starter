@@ -31,6 +31,14 @@ describe('Round', function() {
     expect(round.deck).to.equal(deck);
   });
 
+  it.skip('should be able to return the current card', function() {
+    const round = new Round(deck);
+
+    let currentCard = round.returnCurrentCard; 
+
+    expect(currentCard).to.deep.equal(card1);
+  })
+
   //the below block may need editing
   it.skip('should be able to instantiate a new turn', function() {
     const round = new Round(deck);
@@ -60,6 +68,8 @@ describe('Round', function() {
   it.skip('should be able to store incorrect guesses by card id', function() {
     const round = new Round(deck);
 
+    expect(turn.incorrectGuesses).to.be.empty;
+
     round.takeTurn('accessor method');
 
     expect(turn.incorrectGuesses).to.deep.equal([3]);
@@ -69,7 +79,26 @@ describe('Round', function() {
     expect(turn.incorrectGuesses).to.deep.equal([3]);
   }); 
 
+  it.skip('should be able to calculate the percentage of correct guesses', function() {
+    const round = new Round(deck);
 
-})
+    round.takeTurn('accessor method');
+    round.takeTurn('splice()');
 
-// deck = new Deck([card1, card2]); 
+    var percentCorrect = round.calculatePercentCorrect(); 
+
+    expect(percentCorrect).to.equal(50);
+  });
+
+  it.skip('should end a round when all the cards in the deck have been played', function() {
+    const round = new Round(deck);
+
+    round.takeTurn('accessor method');
+    round.takeTurn('splice()');
+    round.calculatePercentCorrect(); 
+
+    var roundOver = round.endRound; 
+
+    expect(roundOver).to.equal('** Round over! ** You answered 50% of the questions correctly!')
+  });
+});
