@@ -28,6 +28,7 @@ describe('Round', function() {
 
   it('should store a deck of cards', function() {
     const round = new Round(deck);
+    //in Deck class, cards property is array of objects
     expect(round.deck).to.equal(deck);
   });
 
@@ -36,10 +37,9 @@ describe('Round', function() {
 
     let currentCard = round.returnCurrentCard(); 
 
-    expect(currentCard).to.equal(card1);
+    expect(currentCard).to.deep.equal(card1);
   })
 
-  // //the below block may need editing
   // it('should be able to instantiate a new turn with the players guess', function() {
   //   const round = new Round(deck);
     
@@ -57,15 +57,17 @@ describe('Round', function() {
     expect(round.turns).to.equal(2);
   });
 
-  it.skip('should be able to change the current card to the next card in the deck', function() {
+  it('should be able to change the current card to the next card in the deck', function() {
     const round = new Round(deck);
 
     round.takeTurn('mutator method');
+    
+    let currentCard = round.returnCurrentCard(); 
 
-    expect(turn.currentCard).to.deep.equal(card2);
+    expect(currentCard).to.deep.equal(card2);
   });
 
-  it.skip('should be able to evaluate a correct guess', function() {
+  it('should be able to evaluate a correct guess', function() {
     const round = new Round(deck);
 
     const turn = round.takeTurn('mutator method');
@@ -73,7 +75,7 @@ describe('Round', function() {
     expect(turn).to.equal('Correct!')
   });
 
-  it.skip('should be able to evaluate an incorrect guess', function () {
+  it('should be able to evaluate an incorrect guess', function () {
     const round = new Round(deck);
 
     const turn = round.takeTurn('accessor method');
@@ -81,7 +83,7 @@ describe('Round', function() {
     expect(turn).to.equal('Incorrect!')
   }); 
 
-  it.skip('should be able to store incorrect guesses by card id', function() {
+  it('should be able to store incorrect guesses by card id', function() {
     const round = new Round(deck);
 
     expect(turn.incorrectGuesses).to.be.empty;
