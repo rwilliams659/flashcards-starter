@@ -16,39 +16,39 @@ describe('Round', function() {
     deck = new Deck([card1, card2]); 
   });
 
-  it.skip('should be a function', function() {
+  it('should be a function', function() {
     const round = new Round();
     expect(Round).to.be.a('function');
   });
 
-  it.skip('should be an instance of Round', function() {
+  it('should be an instance of Round', function() {
     const round = new Round();
     expect(round).to.be.an.instanceof(Round); 
   });
 
-  it.skip('should store a deck of cards', function() {
+  it('should store a deck of cards', function() {
     const round = new Round(deck);
     expect(round.deck).to.equal(deck);
   });
 
-  it.skip('should be able to return the current card', function() {
+  it('should be able to return the current card', function() {
     const round = new Round(deck);
 
-    let currentCard = round.returnCurrentCard; 
+    let currentCard = round.returnCurrentCard(); 
 
-    expect(currentCard).to.deep.equal(card1);
+    expect(currentCard).to.equal(card1);
   })
 
-  //the below block may need editing
-  it.skip('should be able to instantiate a new turn', function() {
-    const round = new Round(deck);
+  // //the below block may need editing
+  // it('should be able to instantiate a new turn with the players guess', function() {
+  //   const round = new Round(deck);
     
-    round.takeTurn('mutator method');
+  //   round.takeTurn('mutator method');
 
-    expect(turn).to.be.an.instanceof(Turn); 
-  });
+  //   expect(turn).to.be.an.instanceof(Turn); 
+  // });
 
-  it.skip('should keep track of how many turns have been taken', function() {
+  it('should keep track of how many turns have been taken', function() {
     const round = new Round(deck);
 
     round.takeTurn('mutator method');
@@ -64,6 +64,22 @@ describe('Round', function() {
 
     expect(turn.currentCard).to.deep.equal(card2);
   });
+
+  it.skip('should be able to evaluate a correct guess', function() {
+    const round = new Round(deck);
+
+    const turn = round.takeTurn('mutator method');
+    
+    expect(turn).to.equal('Correct!')
+  });
+
+  it.skip('should be able to evaluate an incorrect guess', function () {
+    const round = new Round(deck);
+
+    const turn = round.takeTurn('accessor method');
+
+    expect(turn).to.equal('Incorrect!')
+  }); 
 
   it.skip('should be able to store incorrect guesses by card id', function() {
     const round = new Round(deck);
@@ -97,7 +113,7 @@ describe('Round', function() {
     round.takeTurn('splice()');
     round.calculatePercentCorrect(); 
 
-    var roundOver = round.endRound; 
+    const roundOver = round.endRound; 
 
     expect(roundOver).to.equal('** Round over! ** You answered 50% of the questions correctly!')
   });
