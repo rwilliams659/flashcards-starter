@@ -114,16 +114,16 @@ describe('Round', function() {
     expect(roundOver).to.equal('** Round over! ** You answered 67% of the questions correctly!');
   });
   
-  it('should announce relevant percentage of correct guesses end a round when all cards have been played', function () {
-    const round = new Round(deck);
+  // it('should announce relevant percentage of correct guesses end a round when all cards have been played', function () {
+  //   const round = new Round(deck);
 
-    round.takeTurn('accessor method');
-    round.takeTurn('slice()');
-    round.takeTurn('callback function');
-    round.calculatePercentCorrect();
+  //   round.takeTurn('accessor method');
+  //   round.takeTurn('slice()');
+  //   round.takeTurn('callback function');
+  //   round.calculatePercentCorrect();
 
-    const roundOver = round.endRound();
+  //   const roundOver = round.endRound();
 
-    expect(roundOver).to.equal('** Round over! ** You answered 33% of the questions correctly!');
-  });
+  //   expect(roundOver).to.equal('** Round over! ** You answered 33% of the questions correctly!');
+  // });
 });
