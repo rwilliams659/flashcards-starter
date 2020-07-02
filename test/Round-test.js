@@ -29,18 +29,18 @@ describe('Round', function() {
     expect(round.deck).to.equal(deck);
   });
 
+  it('should start out with no turns recorded', function () {
+    const round = new Round(deck);
+
+    expect(round.turns).to.equal(0);
+  });
+
   it('should be able to return the current card', function() {
     const round = new Round(deck);
 
     let currentCard = round.returnCurrentCard(); 
 
     expect(currentCard).to.deep.equal(card1);
-  });
-
-  it('should start out with no turns recorded', function() {
-    const round = new Round(deck);
-
-    expect(round.turns).to.equal(0);
   });
 
   it('should keep track of how many turns have been taken', function() {
@@ -103,16 +103,4 @@ describe('Round', function() {
 
     expect(percentCorrect).to.equal(67);
   });
-
-  // it.skip('should exit the game when the round is complete', function() {
-  //   const round = new Round(deck);
-
-  //   round.takeTurn('accessor method');
-  //   round.takeTurn('splice()');
-  //   round.takeTurn('callback function');
-
-  //   round.endRound(); 
-
-  //   expect(myCLI).to.exit.with.code(0);
-  // });
 });

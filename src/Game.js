@@ -10,8 +10,7 @@ class Game {
   }
 
   start = cardData => {
-    let flashcards = []; 
-    cardData.forEach(card => flashcards.push(new Card(card.id, card.question, card.answers, card.correctAnswer)));
+    let flashcards = cardData.map(card => new Card(card.id, card.question, card.answers, card.correctAnswer));
     const deck = new Deck(flashcards); 
     const round = new Round(deck); 
     this.currentRound = round; 

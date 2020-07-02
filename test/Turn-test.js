@@ -30,12 +30,12 @@ describe('Turn', function() {
     expect(turn.currentCard).to.deep.equal(card);  
   });
 
-  it('should be able to return the current card', function() {
+  it('should be able to return the guess', function() {
     const turn = new Turn('mutator method', card);
     expect(turn.returnGuess()).to.equal('mutator method'); 
   });
 
-  it('should be able to return the guess', function() {
+  it('should be able to return the current card', function() {
     const turn = new Turn('mutator method', card);
     expect(turn.returnCard()).to.deep.equal(card);
   }); 
