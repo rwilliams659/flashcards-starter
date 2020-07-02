@@ -1,5 +1,4 @@
 const data = require('./data');
-const prototypeQuestions = data.prototypeData;
 const util = require('./util');
 const Card = require('./Card');
 const Deck = require('./Deck');
@@ -10,7 +9,7 @@ class Game {
     this.currentRound = null; 
   }
 
-  start(cardData) {
+  start = cardData => {
     let flashcards = []; 
     cardData.forEach(card => flashcards.push(new Card(card.id, card.question, card.answers, card.correctAnswer)));
     const deck = new Deck(flashcards); 
@@ -20,12 +19,12 @@ class Game {
     this.printQuestion(round); 
   }
 
-  printMessage(deck, round) {
+  printMessage = (deck, round) => {
       console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
   }
 
-  printQuestion(round) {
+  printQuestion = round => {
       util.main(round);
   }
 }
