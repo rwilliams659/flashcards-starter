@@ -1,10 +1,8 @@
 # FlashCards
 
-## Abstract
-
 Step up your learning with digital flashcards that can be played through easily in your terminal. For a given deck of flashcards, you can cycle through each card, select an answer, and see if it was correct. When the whole deck has been played through, you will be alerted to the percentage of answers you got correct.
 
-## How the Game Works
+## Preview of How the Game Works
 
 ![gif of working flashcards](readme-assets/flashcards.gif)
 
