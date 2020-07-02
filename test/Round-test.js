@@ -6,11 +6,8 @@ const Deck = require('../src/Deck');
 const Card = require('../src/Card');
 
 describe('Round', function() {
-  let card1;
-  let card2;
-  let card3; 
-  let deck; 
-  beforeEach(function() {
+  let card1, card2, card3, deck; 
+  before(function() {
     card1 = new Card(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
     card2 = new Card(7, 'Which array prototype is not an accessor method?', ['join()', 'slice()', 'splice()'], 'splice()');
     card3 = new Card(8, 'What do iterator methods take in as their first argument?', ['callback function', 'current element', 'an array'], 'callback function');

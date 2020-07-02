@@ -6,7 +6,7 @@ const Card = require('../src/Card');
 
 describe('Turn', function() {
   let card; 
-  beforeEach(function() {
+  before(function() {
     card = new Card(4, 'What type of prototype method does not modify the existing array but returns a particular representation of the array?', ['mutator method', 'accessor method', 'iteration method'], 'accessor method'); 
   });
 
