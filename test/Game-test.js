@@ -6,24 +6,24 @@ const Card = require('../src/Card');
 const Deck = require('../src/Deck');
 
 describe('Game', function() {
+  let game;
+  before(function() {
+    game = new Game(); 
+  });
 
   it('should be a function', function() {
-    const game = new Game(); 
     expect(Game).to.be.a('function');
   });
 
   it('should be an instance of Game', function() {
-    const game = new Game();
     expect(game).to.be.an.instanceof(Game);
   });
 
   it('should have no current round when created', function() {
-    const game = new Game();
     expect(game.currentRound).to.equal(null); 
   });
 
   it('should keep track of the current round', function() {
-    const game = new Game();
     const card3 = {
       id: 3,
       question: 'What is my name?',
