@@ -40,6 +40,12 @@ describe('Round', function() {
     expect(currentCard).to.deep.equal(card1);
   });
 
+  it('should start out with no turns recorded', function() {
+    const round = new Round(deck);
+
+    expect(round.turns).to.equal(0);
+  });
+
   it('should keep track of how many turns have been taken', function() {
     const round = new Round(deck);
 
@@ -101,29 +107,15 @@ describe('Round', function() {
     expect(percentCorrect).to.equal(67);
   });
 
-  it('should announce percentage of correct guesses end a round when all cards have been played', function() {
-    const round = new Round(deck);
-
-    round.takeTurn('accessor method');
-    round.takeTurn('splice()');
-    round.takeTurn('callback function');
-    round.calculatePercentCorrect(); 
-
-    const roundOver = round.endRound(); 
-
-    expect(roundOver).to.equal('** Round over! ** You answered 67% of the questions correctly!');
-  });
-  
-  // it('should announce relevant percentage of correct guesses end a round when all cards have been played', function () {
+  // it.skip('should exit the game when the round is complete', function() {
   //   const round = new Round(deck);
 
   //   round.takeTurn('accessor method');
-  //   round.takeTurn('slice()');
+  //   round.takeTurn('splice()');
   //   round.takeTurn('callback function');
-  //   round.calculatePercentCorrect();
 
-  //   const roundOver = round.endRound();
+  //   round.endRound(); 
 
-  //   expect(roundOver).to.equal('** Round over! ** You answered 33% of the questions correctly!');
+  //   expect(myCLI).to.exit.with.code(0);
   // });
 });
