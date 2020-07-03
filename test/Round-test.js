@@ -35,6 +35,18 @@ describe('Round', function() {
     expect(round.turns).to.equal(0);
   });
 
+  it('should be initialized with a start time', function() {
+    const round = new Round(deck);
+
+    expect(round.startTime).to.exist; 
+  });
+
+  it('should be initialized with no end time', function () {
+    const round = new Round(deck);
+
+    expect(round.endTime).to.be.a('null');
+  }); 
+
   it('should be able to return the current card', function() {
     const round = new Round(deck);
 
@@ -99,8 +111,34 @@ describe('Round', function() {
     round.takeTurn('splice()');
     round.takeTurn('callback function');
 
-    var percentCorrect = round.calculatePercentCorrect(); 
+    const percentCorrect = round.calculatePercentCorrect(); 
 
     expect(percentCorrect).to.equal(67);
+  });
+
+  it('should be able to record when the round ended', function() {
+    const round = new Round(deck);
+
+    round.takeTurn('accessor method');
+    round.takeTurn('splice()');
+    round.takeTurn('callback function');
+
+    round.getEndTime(); 
+
+    expect(round.endTime).to.not.be.a('null');
+  });
+
+  it('should be able to calculate time elapsed during the round', function () {
+    const round = new Round(deck);
+
+    round.takeTurn('accessor method');
+    round.takeTurn('splice()');
+    round.takeTurn('callback function');
+
+    round.getEndTime();
+
+    const time = round.calculateRoundTime();
+
+    expect(time).to.be.an('object'); 
   });
 });

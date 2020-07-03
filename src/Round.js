@@ -2,10 +2,12 @@ const Turn = require('./Turn');
 
 class Round {
   constructor(deck) {
-    
+
     this.deck = deck;
     this.turns = 0;
     this.incorrectGuesses = [];
+    this.startTime = Date.now(); 
+    this.endTime = null; 
   }
 
   returnCurrentCard = () => this.deck.cards[this.turns];
@@ -26,8 +28,17 @@ class Round {
     return percentCorrect; 
   }
 
-  endRound = () => {
-    console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`);
+  getEndTime = () => this.endTime = Date.now(); 
+
+  calculateRoundTime = () => {
+    const totalSeconds = Math.floor((this.endTime - this.startTime)/1000);
+    const minutes = Math.floor(totalSeconds/60);
+    const seconds = totalSeconds%60; 
+    return {minutes: minutes, seconds: seconds};
+  }
+
+  endRound = time => { 
+    console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly in ${time.minutes} minutes & ${time.seconds} seconds!`);
     return process.exit();
   }
 }
